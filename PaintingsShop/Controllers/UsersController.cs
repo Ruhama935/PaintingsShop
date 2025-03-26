@@ -76,34 +76,35 @@ namespace PaintingsShop.Controllers
 
         }
 
-        // PUT api/<UsersController>/5
-        //[HttpPut("{id}")]
-        //public ActionResult<User> Put(int id, [FromBody] User user)
-        //{
-        //    string textToReplace = string.Empty;
-        //    using (StreamReader reader = System.IO.File.OpenText(filePath))
-        //    {
-        //        string currentUserInFile;
-        //        while ((currentUserInFile = reader.ReadLine()) != null)
-        //        {
+        //PUT api/<UsersController>/5
+        [HttpPut("{id}")]
+        public ActionResult<User> Put(int id, [FromBody] User user)
+        {
+            string textToReplace = string.Empty;
+            using (StreamReader reader = System.IO.File.OpenText(filePath))
+            {
+                string currentUserInFile;
+                while ((currentUserInFile = reader.ReadLine()) != null)
+                {
 
-        //            User Cuser = JsonSerializer.Deserialize<User>(currentUserInFile);
-        //            if (Cuser.Id == id)
-        //                textToReplace = currentUserInFile;
-        //        }
-        //    }
+                    User Cuser = JsonSerializer.Deserialize<User>(currentUserInFile);
+                    if (Cuser.Id == id)
+                        textToReplace = currentUserInFile;
+                }
+            }
 
-        //    if (textToReplace != string.Empty)
-        //    {
-        //        string text = System.IO.File.ReadAllText(filePath);
-        //        text = text.Replace(textToReplace, JsonSerializer.Serialize(user));
-        //        System.IO.File.WriteAllText(filePath, text);
-        //    }
+            if (textToReplace != string.Empty)
+            {
+                string text = System.IO.File.ReadAllText(filePath);
+                text = text.Replace(textToReplace, JsonSerializer.Serialize(user));
+                System.IO.File.WriteAllText(filePath, text);
+                return Ok(user);
+            }
+            return NotFound();
 
+        }
 
-        //}
-
-        // DELETE api/<UsersController>/5
+        //DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

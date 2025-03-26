@@ -30,5 +30,27 @@ const login = async () => {
     if (!response.ok)
         throw new Error("Error in the server")
     const user = await response.json();
+    sessionStorage.setItem("user", JSON.stringify(user))
+    window.location.assign('./in.html')
+}
+
+const update = async () => {
+    const userName = document.getElementById("userName").value;
+    const password = document.getElementById("password").value;
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const userId = JSON.parse(sessionStorage.getItem("user")).id
+    const response = await fetch(`https://localhost:44304/api/users/${userId}`, {
+        method: 'PUT',
+        body: JSON.stringify({ id:userId, userName, password, firstName, lastName }),
+        headers: {
+            "Content-Type": 'application/json'
+        }
+    })
+    if (!response.ok)
+        throw new Error("http error - status: " + response.status);
+    const updateUser = await response.json();
+    sessionStorage.setItem("user", JSON.stringify(updateUser));
+    console.log(updateUser);
     window.location.assign('./in.html')
 }
