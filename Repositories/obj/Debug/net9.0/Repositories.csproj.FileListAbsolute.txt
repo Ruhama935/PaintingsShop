@@ -1,0 +1,6 @@
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\Repositories\obj\Debug\net9.0\Repositories.csproj.AssemblyReference.cache
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\Repositories\obj\Debug\net9.0\Repositories.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\Repositories\obj\Debug\net9.0\Repositories.AssemblyInfoInputs.cache
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\Repositories\obj\Debug\net9.0\Repositories.AssemblyInfo.cs
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\Repositories\obj\Debug\net9.0\Repositories.csproj.CoreCompileInputs.cache
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\Repositories\obj\Debug\net9.0\Repositories.sourcelink.json

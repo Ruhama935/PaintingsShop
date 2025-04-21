@@ -1,0 +1,12 @@
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\bin\Debug\net9.0\Users.deps.json
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\bin\Debug\net9.0\Users.dll
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\bin\Debug\net9.0\Users.pdb
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\obj\Debug\net9.0\Users.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\obj\Debug\net9.0\Users.AssemblyInfoInputs.cache
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\obj\Debug\net9.0\Users.AssemblyInfo.cs
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\obj\Debug\net9.0\Users.csproj.CoreCompileInputs.cache
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\obj\Debug\net9.0\Users.sourcelink.json
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\obj\Debug\net9.0\Users.dll
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\obj\Debug\net9.0\refint\Users.dll
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\obj\Debug\net9.0\Users.pdb
+C:\Users\MOEUser\Desktop\‏‏תיקיה חדשה\User\obj\Debug\net9.0\ref\Users.dll
