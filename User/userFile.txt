@@ -1,4 +1,0 @@
-{"Id":1,"userName":"avigail","password":"3648","firstName":"avigail1","lastName":"cohen1"}
-{"Id":2,"userName":"User1","password":"1111","firstName":"user1","lastName":"11"}
-{"Id":3,"userName":"User2","password":"2222","firstName":"user2","lastName":"22"}
-{"Id":4,"userName":"Ruchami","password":"9935","firstName":"ruchami","lastName":"gulkarov"}
