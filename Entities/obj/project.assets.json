@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MOEUser\\Desktop\\‏‏תיקיה חדשה\\Entities\\Entities.csproj",
+      "projectUniqueName": "C:\\Users\\MOEUser\\Desktop\\PaintingsShop\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "C:\\Users\\MOEUser\\Desktop\\‏‏תיקיה חדשה\\Entities\\Entities.csproj",
+      "projectPath": "C:\\Users\\MOEUser\\Desktop\\PaintingsShop\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\MOEUser\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MOEUser\\Desktop\\‏‏תיקיה חדשה\\Entities\\obj\\",
+      "outputPath": "C:\\Users\\MOEUser\\Desktop\\PaintingsShop\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,5 +1,5 @@
-﻿using System.Text.Json;
-//using Entities;
+﻿using Entities;
+using System.Text.Json;
 
 namespace Repositories
 {
@@ -8,7 +8,7 @@ namespace Repositories
         string filePath = "./userFile.txt";
 
         
-        public List<User> GetUser()
+        public IEnumerable<User> GetUsers()
         {
             List<User> users = new List<User>();
             using (StreamReader reader = System.IO.File.OpenText(filePath))

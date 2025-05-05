@@ -1,0 +1,6 @@
+C:\Users\MOEUser\Desktop\PaintingsShop\Services\obj\Debug\net9.0\Services.csproj.AssemblyReference.cache
+C:\Users\MOEUser\Desktop\PaintingsShop\Services\obj\Debug\net9.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MOEUser\Desktop\PaintingsShop\Services\obj\Debug\net9.0\Services.AssemblyInfoInputs.cache
+C:\Users\MOEUser\Desktop\PaintingsShop\Services\obj\Debug\net9.0\Services.AssemblyInfo.cs
+C:\Users\MOEUser\Desktop\PaintingsShop\Services\obj\Debug\net9.0\Services.csproj.CoreCompileInputs.cache
+C:\Users\MOEUser\Desktop\PaintingsShop\Services\obj\Debug\net9.0\Services.sourcelink.json

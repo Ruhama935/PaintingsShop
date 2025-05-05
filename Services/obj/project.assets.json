@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net9.0": {
+      "zxcvbn-core/7.0.92": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/zxcvbn-core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/zxcvbn-core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -28,6 +41,24 @@
     }
   },
   "libraries": {
+    "zxcvbn-core/7.0.92": {
+      "sha512": "3CKGKJe4SnFrks38EuF4iq1DT6IqsyNu/zMQp9GOpaipb7qdZndjjTXQa1/dkNh/OoxD0/aTcIBrRrbD4ALeGQ==",
+      "type": "package",
+      "path": "zxcvbn-core/7.0.92",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net451/zxcvbn-core.dll",
+        "lib/net451/zxcvbn-core.xml",
+        "lib/netstandard1.3/zxcvbn-core.dll",
+        "lib/netstandard1.3/zxcvbn-core.xml",
+        "lib/netstandard2.0/zxcvbn-core.dll",
+        "lib/netstandard2.0/zxcvbn-core.xml",
+        "zxcvbn-core.7.0.92.nupkg.sha512",
+        "zxcvbn-core.nuspec"
+      ]
+    },
     "Entities/1.0.0": {
       "type": "project",
       "path": "../Entities/Entities.csproj",
@@ -42,7 +73,8 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Entities >= 1.0.0",
-      "Repositories >= 1.0.0"
+      "Repositories >= 1.0.0",
+      "zxcvbn-core >= 7.0.92"
     ]
   },
   "packageFolders": {
@@ -52,11 +84,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MOEUser\\Desktop\\‏‏תיקיה חדשה\\Services\\Services.csproj",
+      "projectUniqueName": "C:\\Users\\MOEUser\\Desktop\\PaintingsShop\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "C:\\Users\\MOEUser\\Desktop\\‏‏תיקיה חדשה\\Services\\Services.csproj",
+      "projectPath": "C:\\Users\\MOEUser\\Desktop\\PaintingsShop\\Services\\Services.csproj",
       "packagesPath": "C:\\Users\\MOEUser\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MOEUser\\Desktop\\‏‏תיקיה חדשה\\Services\\obj\\",
+      "outputPath": "C:\\Users\\MOEUser\\Desktop\\PaintingsShop\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -77,11 +109,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\MOEUser\\Desktop\\‏‏תיקיה חדשה\\Entities\\Entities.csproj": {
-              "projectPath": "C:\\Users\\MOEUser\\Desktop\\‏‏תיקיה חדשה\\Entities\\Entities.csproj"
+            "C:\\Users\\MOEUser\\Desktop\\PaintingsShop\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\MOEUser\\Desktop\\PaintingsShop\\Entities\\Entities.csproj"
             },
-            "C:\\Users\\MOEUser\\Desktop\\‏‏תיקיה חדשה\\Repositories\\Repositories.csproj": {
-              "projectPath": "C:\\Users\\MOEUser\\Desktop\\‏‏תיקיה חדשה\\Repositories\\Repositories.csproj"
+            "C:\\Users\\MOEUser\\Desktop\\PaintingsShop\\Repositories\\Repositories.csproj": {
+              "projectPath": "C:\\Users\\MOEUser\\Desktop\\PaintingsShop\\Repositories\\Repositories.csproj"
             }
           }
         }
@@ -101,6 +133,12 @@
     "frameworks": {
       "net9.0": {
         "targetAlias": "net9.0",
+        "dependencies": {
+          "zxcvbn-core": {
+            "target": "Package",
+            "version": "[7.0.92, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

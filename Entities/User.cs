@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PaintingsShop
+namespace Entities
 {
     public class User
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-//using Entities;
+using Entities;
 using Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,8 +17,8 @@ namespace PaintingsShop.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            List<User> users = userService.GetUser();
-            if (users.Count > 0)
+            IEnumerable<User> users = userService.GetUsers();
+            if (users.Count() > 0)
                 return Ok(users);
             return NoContent();
         }
@@ -37,10 +37,13 @@ namespace PaintingsShop.Controllers
         [HttpPost]
         public IActionResult SignUp([FromBody] User user)
         {
+            int strength = userService.GetPasswordStrength(user.password);
+            if(strength <2)
+                return BadRequest("ppassword is too weak");
             User newUser = userService.SignUp(user);
             if (user == null)
                 return BadRequest();
-            return Ok(user);
+            return CreatedAtAction(nameof(GetById), new { id = user.Id }, newUser);
         }
 
         [Route("login")]
@@ -49,8 +52,16 @@ namespace PaintingsShop.Controllers
         {
             User newUser = userService.Login(user);
             if (user == null)
-                return NotFound();
+                return Unauthorized();
             return Ok(user);
+        }
+
+        [Route("password")]
+        [HttpPost]
+        public ActionResult<User> CheckPasswordStrength([FromBody] string password)
+        {
+            int strength = userService.GetPasswordStrength(password);
+            return Ok(strength);
         }
 
         //PUT api/<UsersController>/5
