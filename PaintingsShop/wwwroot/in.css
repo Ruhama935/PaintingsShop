@@ -1,0 +1,11 @@
+﻿div {
+    border: dotted;
+    border-color: cornsilk;
+    border-width: thick;
+    align-content: center;
+    text-align: center;
+    height: 300px;
+    width: 300px;
+    background-color: cornflowerblue;
+    color: cornsilk
+}
