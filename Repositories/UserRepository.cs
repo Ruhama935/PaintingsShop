@@ -7,8 +7,7 @@ namespace Repositories
 {
     public class UserRepository : IUserRepository
     {
-        //string filePath = "./userFile.txt";
-        PaintingsShopContext dbContext;
+        private readonly PaintingsShopContext dbContext;
         public UserRepository(PaintingsShopContext dbContext)
         {
             this.dbContext = dbContext;
