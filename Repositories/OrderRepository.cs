@@ -22,7 +22,7 @@ namespace Repositories
             await _paintingsShopContext.SaveChangesAsync();
             return order;
         }
-        public async Task<IEnumerable<Order>> GetOrders(int id)
+        public async Task<List<Order>> GetOrders(int id)
         {
             return await _paintingsShopContext.Orders.Where(order => order.Id == id).ToListAsync();
         }
