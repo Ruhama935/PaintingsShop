@@ -15,6 +15,7 @@ public partial class User
     public int Id { get; set; }
 
     [Required]
+    [EmailAddress]
     [Column("userName")]
     [StringLength(50)]
     public string UserName { get; set; }

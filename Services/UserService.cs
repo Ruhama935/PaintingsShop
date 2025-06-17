@@ -3,15 +3,23 @@ using Entities;
 using System.Net;
 using Zxcvbn;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using AutoMapper;
+using DTOs;
 
 namespace Services
 {
     public class UserService : IUserService
     {
+        private readonly ILogger<UserService> _logger;
         private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository)
+        private readonly IMapper _mapper;
+
+        public UserService(IUserRepository userRepository, ILogger<UserService> logger, IMapper mapper)
         {
             _userRepository = userRepository;
+            _logger = logger;
+            _mapper = mapper;
         }
 
         public int GetPasswordStrength(string password)
@@ -20,31 +28,37 @@ namespace Services
         }
 
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<UserDTO>> GetUsers()
         {
-            return await _userRepository.GetUsers();
+            var users = await _userRepository.GetUsers();
+            return _mapper.Map<IEnumerable<UserDTO>>(users);
         }
 
-        public async Task<User> getUserByID(int id)
+        public async Task<UserDTO> getUserByID(int id)
         {
-            return await _userRepository.getUserByID(id);
+            var user = await _userRepository.getUserByID(id);
+            return _mapper.Map<UserDTO>(user);
         }
 
-        public async Task<User> SignUp(User user)
+        public async Task<UserDTO> SignUp(UserDTO user)
         {
             if (GetPasswordStrength(user.Password) < 2)
                 throw new ArgumentException("the password is too weak😐");
-            return await _userRepository.SignUp(user);
+            var newUser = await _userRepository.SignUp(_mapper.Map<User>(user);
+            return _mapper.Map<UserDTO>(newUser);
         }
 
-        public async Task<User> Login(User user)
+        public async Task<UserDTO> Login(UserDTO user)
         {
-            return await _userRepository.Login(user);
+            _logger.LogInformation($"Login attempt for user {user.UserName}\n-----------------\n");
+            var foundUser = await _userRepository.Login(_mapper.Map < User > (user));
+            return _mapper.Map<UserDTO>(foundUser);
         }
 
-        public async Task<User> update(int id, User user)
+        public async Task<UserDTO> update(int id, UserDTO user)
         {
-            return await _userRepository.update(id, user);
+            var updatedUser = await _userRepository.update(id, _mapper.Map < User > (user));
+            return _mapper.Map<UserDTO>(updatedUser);
         }
 
     }

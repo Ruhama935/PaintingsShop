@@ -1,6 +1,7 @@
 ﻿using Entities;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using Moq.EntityFrameworkCore;
 using Repositories;
 using System;
 using System.Collections.Generic;
@@ -251,6 +252,74 @@ namespace Tests
 
             // Assert
             mockDbSet.Verify(x => x.FindAsync(targetId), Times.Once);
+        }
+        [Fact]
+        public async Task GetProductsFiltered_WithCategoryFilter_ReturnsFilteredProducts()
+        {
+            // Arrange
+            var products = new List<Product>
+        {
+            new Product { Id = 1, Name = "Product A", Price = 100, CategoryId = 1 },
+            new Product { Id = 2, Name = "Product B", Price = 200, CategoryId = 2 },
+        };
+
+            var mockContext = new Mock<PaintingsShopContext>();
+            mockContext.Setup(x => x.Products).ReturnsDbSet(products);
+
+            var repo = new ProductRepository(mockContext.Object);
+
+            // Act
+            var result = await repo.GetProductsFiltered(1, null, null);
+
+            // Assert
+            Assert.Single(result);
+            Assert.Equal(1, result.First().CategoryId);
+        }
+
+        [Fact]
+        public async Task GetProductsFiltered_WithPriceRange_ReturnsCorrectProducts()
+        {
+            // Arrange
+            var products = new List<Product>
+        {
+            new Product { Id = 1, Name = "Cheap", Price = 50, CategoryId = 1 },
+            new Product { Id = 2, Name = "Mid", Price = 150, CategoryId = 1 },
+            new Product { Id = 3, Name = "Expensive", Price = 300, CategoryId = 1 },
+        };
+
+            var mockContext = new Mock<PaintingsShopContext>();
+            mockContext.Setup(x => x.Products).ReturnsDbSet(products);
+
+            var repo = new ProductRepository(mockContext.Object);
+
+            // Act
+            var result = await repo.GetProductsFiltered(null, 100, 200);
+
+            // Assert
+            Assert.Single(result);
+            Assert.Equal("Mid", result.First().Name);
+        }
+
+        [Fact]
+        public async Task GetProductsFiltered_WithNoMatchingFilters_ReturnsEmpty()
+        {
+            // Arrange
+            var products = new List<Product>
+        {
+            new Product { Id = 1, Name = "Product A", Price = 100, CategoryId = 1 },
+            new Product { Id = 2, Name = "Product B", Price = 200, CategoryId = 2 },
+        };
+
+            var mockContext = new Mock<PaintingsShopContext>();
+            mockContext.Setup(x => x.Products).ReturnsDbSet(products);
+
+            var repo = new ProductRepository(mockContext.Object);
+
+            // Act
+            var result = await repo.GetProductsFiltered(3, 500, 800);
+
+            // Assert
+            Assert.Empty(result);
         }
     }
 }

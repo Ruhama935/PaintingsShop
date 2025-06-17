@@ -54,27 +54,6 @@ namespace Repositories
                 dbContext.SaveChanges();
                 return prevUser;
             }
-            //dbContext.Users.First<User>();
-            //string textToReplace = string.Empty;
-            //using (StreamReader reader = System.IO.File.OpenText(filePath))
-            //{
-            //    string currentUserInFile;
-            //    while ((currentUserInFile = reader.ReadLine()) != null)
-            //    {
-
-            //        User Cuser = JsonSerializer.Deserialize<User>(currentUserInFile);
-            //        if (Cuser.Id == id)
-            //            textToReplace = currentUserInFile;
-            //    }
-            //}
-
-            //if (textToReplace != string.Empty)
-            //{
-            //    string text = System.IO.File.ReadAllText(filePath);
-            //    text = text.Replace(textToReplace, JsonSerializer.Serialize(user));
-            //    System.IO.File.WriteAllText(filePath, text);
-            //    return user;
-            //}
             return null;
         }
     }

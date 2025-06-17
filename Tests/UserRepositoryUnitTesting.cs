@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Moq;
 using Moq.EntityFrameworkCore;
 using Repositories;
+using System.ComponentModel.DataAnnotations;
 
 namespace Tests
 {
@@ -12,8 +13,8 @@ namespace Tests
         public async Task GetUsers_ReturnsAllUsers()
         {
             // Arrange
-            var user1 = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123", Password = "password"};
-            var user2 = new User { Id = 2, FirstName = "David", LastName = "Levi", UserName = "david456", Password = "123456" };
+            var user1 = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123@example.com", Password = "password"};
+            var user2 = new User { Id = 2, FirstName = "David", LastName = "Levi", UserName = "david456@example.com", Password = "123456" };
 
             var mockContext = new Mock<PaintingsShopContext>();
             var users = new List<User>() { user1, user2 };
@@ -33,7 +34,7 @@ namespace Tests
         public async Task GetUserByID_ValidId_ReturnsUser()
         {
             // Arrange
-            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123", Password = "password" };
+            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123@example.com", Password = "password" };
 
             var mockContext = new Mock<PaintingsShopContext>();
             var users = new List<User>() { user };
@@ -52,7 +53,7 @@ namespace Tests
         public async Task GetUserByID_InvalidId_ReturnsNull()
         {
             // Arrange
-            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123", Password = "password" };
+            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123@example.com", Password = "password" };
 
             var mockContext = new Mock<PaintingsShopContext>();
             var users = new List<User>() { user };
@@ -71,7 +72,7 @@ namespace Tests
         public async Task SignUp_ValidUser_ReturnsCreatedUser()
         {
             // Arrange
-            var user = new User { FirstName = "John", LastName = "Doe", UserName = "john123", Password = "newpass"};
+            var user = new User { FirstName = "John", LastName = "Doe", UserName = "john123@example.com", Password = "newpass"};
 
             var mockContext = new Mock<PaintingsShopContext>();
             var users = new List<User>();
@@ -85,13 +86,60 @@ namespace Tests
             // Assert
             Assert.Equal(user, result);
         }
+        [Fact]
+        public async Task SignUp_WithInvalidEmail_ThrowsValidationException()
+        {
+            // Arrange
+            var user = new User
+            {
+                Id = 1,
+                UserName = "invalid-email",
+                Password = "password",
+                FirstName = "Invalid",
+                LastName = "Email"
+            };
+
+            var context = new ValidationContext(user);
+            var results = new List<ValidationResult>();
+
+            // Act
+            var isValid = Validator.TryValidateObject(user, context, results, true);
+
+            // Assert
+            Assert.False(isValid);
+            Assert.Contains(results, r => r.MemberNames.Contains("UserName"));
+        }
+
+        [Fact]
+        public async Task SignUp_WithTooShortPassword_DoesNotSaveUser()
+        {
+            // Arrange
+            var user = new User
+            {
+                UserName = "shortpass@example.com",
+                Password = "1@t",
+                FirstName = "Short",
+                LastName = "Pass"
+            };
+
+            var context = new ValidationContext(user);
+            var results = new List<ValidationResult>();
+
+            // Act
+            var isValid = Validator.TryValidateObject(user, context, results, true);
+
+            // Assert
+            Assert.False(isValid);
+            Assert.Contains(results, r => r.MemberNames.Contains("Password"));
+        }
+
 
         [Fact]
         public async Task Login_ValidCredentials_ReturnsUser()
         {
             // Arrange
-            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123", Password = "password" };
-            var loginUser = new User { UserName = "miriam123", Password = "password" };
+            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123@example.com", Password = "password" };
+            var loginUser = new User { UserName = "miriam123@example.com", Password = "password" };
 
             var mockContext = new Mock<PaintingsShopContext>();
             var users = new List<User>() { user };
@@ -110,8 +158,8 @@ namespace Tests
         public async Task Login_InvalidCredentials_ThrowsException()
         {
             // Arrange
-            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123", Password = "password" };
-            var loginUser = new User { UserName = "wronguser", Password = "wrongpass" };
+            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123@example.com", Password = "password" };
+            var loginUser = new User { UserName = "wronguser@example.com", Password = "wrongpass" };
 
             var mockContext = new Mock<PaintingsShopContext>();
             var users = new List<User>() { user };
@@ -127,8 +175,8 @@ namespace Tests
         public async Task Update_ValidIdAndUser_ReturnsUpdatedUser()
         {
             // Arrange
-            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123", Password = "password" };
-            var updateData = new User { FirstName = "UpdatedMiriam", LastName = "UpdatedCohen", UserName = "updatedmiriam", Password = "newpassword" };
+            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123@example.com", Password = "password" };
+            var updateData = new User { FirstName = "UpdatedMiriam", LastName = "UpdatedCohen", UserName = "updatedmiriam@example.com", Password = "newpassword" };
 
             var mockContext = new Mock<PaintingsShopContext>();
             var users = new List<User>() { user };
@@ -150,8 +198,8 @@ namespace Tests
         public async Task Update_InvalidId_ReturnsNull()
         {
             // Arrange
-            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123", Password = "password" };
-            var updateData = new User { FirstName = "UpdatedName", LastName = "UpdatedLast", UserName = "updated", Password = "newpass" };
+            var user = new User { Id = 1, FirstName = "Miriam", LastName = "Cohen", UserName = "miriam123@example.com", Password = "password" };
+            var updateData = new User { FirstName = "UpdatedName", LastName = "UpdatedLast", UserName = "updated@example.com", Password = "newpass" };
 
             var mockContext = new Mock<PaintingsShopContext>();
             var users = new List<User>() { user };

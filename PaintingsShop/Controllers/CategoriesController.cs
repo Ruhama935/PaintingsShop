@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Entities;
 using Services;
 using System.Threading.Tasks;
+using DTOs;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,7 +18,7 @@ namespace PaintingsShop.Controllers
         }
         // GET: api/<CategoriesController>
         [HttpGet]
-        public async Task<List<Category>> Get()
+        public async Task<List<CategoryDTO>> Get()
         {
             return await _categoryService.GetCategories();
         }

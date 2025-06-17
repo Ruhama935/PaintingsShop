@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Entities;
 using Repositories;
+using DTOs;
 using Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,14 +18,14 @@ namespace PaintingsShop.Controllers
         }
         // GET api/<OrdersController>/5
         [HttpGet("{id}")]
-        public async Task<IEnumerable<Order>> Get(int id)
+        public async Task<List<OrderDTO>> Get(int id)
         {
             return await _orderService.GetOrders(id);
         }
 
         // POST api/<OrdersController>
         [HttpPost]
-        public async Task<Order> Post([FromBody] Order order)
+        public async Task<OrderDTO> Post([FromBody] OrderDTO order)
         {
             return await _orderService.CreateOrder(order);
         }
