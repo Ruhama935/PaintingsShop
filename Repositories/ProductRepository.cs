@@ -16,7 +16,7 @@ namespace Repositories
             _paintingsShopContext = paintingsShopContext;
         }
 
-        public async Task<List<Product>> GetAllProducts()
+        public async Task<List<Product>> GetAllProducts()//why you did this?
         {
             return await GetProductsFiltered(null, null, null);
         }
