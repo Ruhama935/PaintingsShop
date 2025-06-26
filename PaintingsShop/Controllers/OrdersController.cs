@@ -3,7 +3,7 @@ using Repositories;
 using DTOs;
 using Services;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860//
 
 namespace PaintingsShop.Controllers
 {
@@ -16,16 +16,16 @@ namespace PaintingsShop.Controllers
         {
             _orderService = orderService;
         }
-        // GET api/<OrdersController>/5
+        // GET api/<OrdersController>/5//
         [HttpGet("{id}")]
-        public async Task<List<OrderDTO>> Get(int id)
+        public async Task<List<OrderDTO>> Get(int id)//clean code - use meaningful names
         {
             return await _orderService.GetOrders(id);
         }
 
-        // POST api/<OrdersController>
+        // POST api/<OrdersController>//
         [HttpPost]
-        public async Task<OrderDTO> Post([FromBody] OrderDTO order)
+        public async Task<OrderDTO> Post([FromBody] OrderDTO order)//clean code - use meaningful names
         {
             return await _orderService.CreateOrder(order);
         }
