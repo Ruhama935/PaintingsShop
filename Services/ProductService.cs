@@ -24,7 +24,8 @@ namespace Services
         public async Task<List<ProductDTO>> GetAllProducts()
         {
             var products = await _productRepository.GetAllProducts();
-            return _mapper.Map<List<ProductDTO>>(products);//do like this in all the functions
+            var productDTOs = _mapper.Map<List<ProductDTO>>(products);
+            return productDTOs;
         }
         public async Task<ProductDTO> GerProductById(int id)
         {
