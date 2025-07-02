@@ -4,7 +4,7 @@ using Services;
 using System.Threading.Tasks;
 using DTOs;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860//
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace PaintingsShop.Controllers
 {
@@ -18,10 +18,8 @@ namespace PaintingsShop.Controllers
         {
             _userService = userService;
         }
-        
-        //clean code - use meaningful names in all functions
 
-        // GET: api/<UsersController>//
+        // GET: api/<UsersController>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<string>>> Get()
         {
@@ -29,10 +27,9 @@ namespace PaintingsShop.Controllers
             if (users.Count() > 0)
                 return Ok(users);
             return NoContent();
-            //users.Count() > 0 ? return Ok(users) : return NoContent();
         }
 
-        // GET api/<UsersController>/5//
+        // GET api/<UsersController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDTO>> GetById(int id)
         {
@@ -40,7 +37,6 @@ namespace PaintingsShop.Controllers
             if (user == null)
                 return NoContent();
             return Ok(user);
-            //return user != null ? Ok(user) : NoContent(); //use in all functions
         }
 
         // POST api/<UsersController>

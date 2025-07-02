@@ -8,7 +8,7 @@ using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.//
+// Add services to the container.
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddControllers();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -30,7 +30,7 @@ builder.Services.AddControllers();
 builder.Host.UseNLog();
 builder.Services.AddOpenApi();
 var app = builder.Build();
-//if (app.Environment.IsDevelopment())//
+//if (app.Environment.IsDevelopment())
 //{
 //    app.UseSwagger();
 //    app.UseSwaggerUI();
@@ -44,7 +44,7 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/openapi/v1.json", "My API V1");
     });
 }
-// Configure the HTTP request pipeline.//
+// Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

@@ -4,7 +4,7 @@ using Services;
 using DTOs;
 
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860//
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace PaintingsShop.Controllers
 {
@@ -17,16 +17,14 @@ namespace PaintingsShop.Controllers
         {
             _productService = productService;
         }
-        ////clean code - use meaningful names in all fanctions
-    
-        // GET: api/<ProductController>//
+        // GET: api/<ProductController>
         [HttpGet]
         public async Task<List<ProductDTO>> Get()
         {
             return await _productService.GetAllProducts();
         }
 
-        // GET api/<ProductController>/5//
+        // GET api/<ProductController>/5
         [HttpGet("{id}")]
         public async Task<ProductDTO> Get(int id)
         {

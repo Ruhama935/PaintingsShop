@@ -34,7 +34,7 @@ namespace Services
             return _mapper.Map<IEnumerable<UserDTO>>(users);
         }
 
-        public async Task<UserDTO> getUserByID(int id)//GetUserById
+        public async Task<UserDTO> getUserByID(int id)
         {
             var user = await _userRepository.getUserByID(id);
             return _mapper.Map<UserDTO>(user);
@@ -44,7 +44,7 @@ namespace Services
         {
             if (GetPasswordStrength(user.Password) < 2)
                 throw new ArgumentException("the password is too weak😐");
-            var newUser = await _userRepository.SignUp(_mapper.Map<User>(user));
+            var newUser = await _userRepository.SignUp(_mapper.Map<User>(user);
             return _mapper.Map<UserDTO>(newUser);
         }
 
@@ -55,7 +55,7 @@ namespace Services
             return _mapper.Map<UserDTO>(foundUser);
         }
 
-        public async Task<UserDTO> update(int id, UserDTO user)//Update
+        public async Task<UserDTO> update(int id, UserDTO user)
         {
             var updatedUser = await _userRepository.update(id, _mapper.Map < User > (user));
             return _mapper.Map<UserDTO>(updatedUser);
